@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 Flask
 scikit-learn
 pandas
 numpy
 matplotlib
-seaborn
-=======
-Flask
-scikit-learn
-pandas
-numpy
-matplotlib
->>>>>>> 0e1fe10ff51df19e1f0bda28605af0bad7e3725f
+gunicorn
