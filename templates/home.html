@@ -1,3 +1,101 @@
-<h1>
-heyy this a home page
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston House Price Prediction</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <!-- CSS Styles -->
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        form button:hover {
+            background-color: #4cae4c;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Boston House Price Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="CRIM" placeholder="CRIM (Per Capita Crime Rate)" required />
+            <input type="text" name="ZN" placeholder="ZN (Proportion of Residential Land)" required />
+            <input type="text" name="INDUS" placeholder="INDUS (Proportion of Non-Retail Business Acres)" required />
+            <input type="text" name="CHAS" placeholder="CHAS (Charles River Dummy Variable)" required />
+            <input type="text" name="NOX" placeholder="NOX (Nitric Oxides Concentration)" required />
+            <input type="text" name="RM" placeholder="RM (Average Number of Rooms)" required />
+            <input type="text" name="Age" placeholder="Age (Proportion of Owner-Occupied Units Built Before 1940)" required />
+            <input type="text" name="DIS" placeholder="DIS (Weighted Distances to Employment Centers)" required />
+            <input type="text" name="RAD" placeholder="RAD (Index of Accessibility to Radial Highways)" required />
+            <input type="text" name="TAX" placeholder="TAX (Full-Value Property Tax Rate per $10,000)" required />
+            <input type="text" name="PTRATIO" placeholder="PTRATIO (Pupil-Teacher Ratio)" required />
+            <input type="text" name="B" placeholder="B (Proportion of Population with African American Descent)" required />
+            <input type="text" name="LSTAT" placeholder="LSTAT (Percentage of Lower Status of the Population)" required />
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
